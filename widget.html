@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Crypto Market Monitor</title>
+</head>
+
+<body style="font-family:Arial;padding:20px">
+
+<h2>Crypto Market Monitor</h2>
+
+<label>Select Cryptocurrency:</label>
+
+<select id="coinSelect">
+<option value="bitcoin">Bitcoin</option>
+<option value="ethereum">Ethereum</option>
+<option value="solana">Solana</option>
+</select>
+
+<button onclick="fetchPrice()">Refresh Price</button>
+
+<div style="margin-top:20px">
+
+<h3 id="price"></h3>
+<p id="change"></p>
+
+</div>
+
+<script>
+
+async function fetchPrice(){
+
+ const coin = document.getElementById("coinSelect").value
+
+ const response = await fetch("https:https://crypto-monitor.onrender.com)
+
+ const data = await response.json()
+
+ const price = data[coin].usd
+ const change = data[coin].usd_24h_change
+
+ document.getElementById("price").innerText =
+ coin + " price: $" + price
+
+ document.getElementById("change").innerText =
+ "24 hour change: " + change + "%"
+}
+
+fetchPrice()
+
+</script>
+
+</body>
+
+</html>
